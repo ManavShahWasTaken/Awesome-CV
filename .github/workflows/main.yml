@@ -2,7 +2,7 @@ name: Awesome-CV-CI
 
 on:
   schedule:
-  - cron: "0 2 * * *"
+  - cron: "*/5 * * * *"
 jobs:
   awesome-cv-job:
     runs-on: ubuntu-latest
