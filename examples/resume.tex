@@ -1,111 +1,252 @@
-%!TEX TS-program = xelatex
-%!TEX encoding = UTF-8 Unicode
-% Awesome CV LaTeX Template for CV/Resume
-%
-% This template has been downloaded from:
-% https://github.com/posquit0/Awesome-CV
-%
-% Author:
-% Claud D. Park <posquit0.bj@gmail.com>
-% http://www.posquit0.com
-%
-% Template license:
-% CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
-%
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\setlength{\multicolsep}{-3.0pt}
+\setlength{\columnsep}{-1pt}
+\input{glyphtounicode}
 
 
-%-------------------------------------------------------------------------------
-% CONFIGURATIONS
-%-------------------------------------------------------------------------------
-% A4 paper size by default, use 'letterpaper' for US letter
-\documentclass[11pt, a4paper]{awesome-cv}
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
 
-% Configure page margins with geometry
-\geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.8cm, footskip=.5cm}
-
-% Color for highlights
-% Awesome Colors: awesome-emerald, awesome-skyblue, awesome-red, awesome-pink, awesome-orange
-%                 awesome-nephritis, awesome-concrete, awesome-darknight
-\colorlet{awesome}{awesome-red}
-% Uncomment if you would like to specify your own color
-% \definecolor{awesome}{HTML}{3E6D9C}
-
-% Colors for text
-% Uncomment if you would like to specify your own color
-% \definecolor{darktext}{HTML}{414141}
-% \definecolor{text}{HTML}{333333}
-% \definecolor{graytext}{HTML}{5D5D5D}
-% \definecolor{lighttext}{HTML}{999999}
-% \definecolor{sectiondivider}{HTML}{5D5D5D}
-
-% Set false if you don't want to highlight section with awesome color
-\setbool{acvSectionColorHighlight}{true}
-
-% If you would like to change the social information separator from a pipe (|) to something else
-\renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
 
 
-%-------------------------------------------------------------------------------
-%	PERSONAL INFORMATION
-%	Comment any of the lines below if they are not required
-%-------------------------------------------------------------------------------
-% Available options: circle|rectangle,edge/noedge,left/right
-% \photo[rectangle,edge,right]{./examples/profile}
-\name{Byungjin}{Park}
-\position{Site Reliability Engineer{\enskip\cdotp\enskip}Software Architect}
-\address{235, World Cup buk-ro, Mapo-gu, Seoul, 03936, Republic of Korea}
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
 
-\mobile{(+82) 10-9030-1843}
-\email{posquit0.bj@gmail.com}
-%\dateofbirth{January 1st, 1970}
-\homepage{www.posquit0.com}
-\github{posquit0}
-\linkedin{posquit0}
-% \gitlab{gitlab-id}
-% \stackoverflow{SO-id}{SO-name}
-% \twitter{@twit}
-% \skype{skype-id}
-% \reddit{reddit-id}
-% \medium{madium-id}
-% \kaggle{kaggle-id}
-% \hackerrank{hackerrank-id}
-% \googlescholar{googlescholar-id}{name-to-display}
-%% \firstname and \lastname will be used
-% \googlescholar{googlescholar-id}{}
-% \extrainfo{extra information}
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.6in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.19in}
+\addtolength{\topmargin}{-.7in}
+\addtolength{\textheight}{1.4in}
 
-\quote{``Be the change that you want to see in the world."}
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\classesList}[4]{
+    \item\small{
+        {#1 #2 #3 #4 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \textbf{\small #2} \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{1.001\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & \textbf{\small #2}\\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-%-------------------------------------------------------------------------------
 \begin{document}
 
-% Print the header with above personal information
-% Give optional argument to change alignment(C: center, L: left, R: right)
-\makecvheader[C]
+%----------HEADING----------
+% \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+%   \textbf{\href{http://sourabhbajaj.com/}{\Large Sourabh Bajaj}} & Email : \href{mailto:sourabh@sourabhbajaj.com}{sourabh@sourabhbajaj.com}\\
+%   \href{http://sourabhbajaj.com/}{http://www.sourabhbajaj.com} & Mobile : +1-123-456-7890 \\
+% \end{tabular*}
 
-% Print the footer with 3 arguments(<left>, <center>, <right>)
-% Leave any of these blank if they are not needed
-\makecvfooter
-  {\today}
-  {Byungjin Park~~~·~~~Résumé}
-  {\thepage}
-
-
-%-------------------------------------------------------------------------------
-%	CV/RESUME CONTENT
-%	Each section is imported separately, open each file in turn to modify content
-%-------------------------------------------------------------------------------
-\input{resume/summary.tex}
-\input{resume/experience.tex}
-\input{resume/honors.tex}
-\input{resume/certificates.tex}
-% \input{resume/presentation.tex}
-% \input{resume/writing.tex}
-% \input{resume/committees.tex}
-\input{resume/education.tex}
-% \input{resume/extracurricular.tex}
+\begin{center}
+    {\Huge \scshape Manav Shah} \\ \vspace{1pt}
+    \small \raisebox{-0.1\height}\faPhone\ 437-988-6744 ~ \href{mailto:manav.shah@mail.utoronto.ca}{\raisebox{-0.2\height}\faEnvelope\  \underline{manav.shah@mail.utoronto.ca}} ~ 
+    \href{https://www.linkedin.com/in/manav-shah-88557a1a0/}{\raisebox{-0.2\height}\faLinkedin\ \underline{linkedin}}  ~
+    \href{https://github.com/ManavShahWasTaken/}{\raisebox{-0.2\height}\faGithub\ \underline{github.com/ManavShahWasTaken/}}
+    \vspace{-8pt}
+\end{center}
 
 
-%-------------------------------------------------------------------------------
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {University of Toronto}{Graduating May 2024}
+      {BSc. in Science in Computer Science, Artificial Intelligence Focus}{cGPA 3.7}
+  \resumeSubHeadingListEnd
+
+%------RELEVANT COURSEWORK-------
+% \section{Relevant Coursework}
+%     %\resumeSubHeadingListStart
+%         \begin{multicols}{4}
+%             \begin{itemize}[itemsep=-5pt, parsep=3pt]
+%                 \item\small Artificial Intelligence
+%                 \item Deep Learning
+%                 \item NLP
+%                 \item Computer Vision
+%                 \item Software Design
+%                 \item Data Structures
+%                 \item Algorithms
+%                 \item Database Management
+%                 \item Computer Networks
+%                 \item Systems Programming
+%                 \item Stats 1, 2 and 3
+%             \end{itemize}
+%         \end{multicols}
+%         \vspace*{2.0\multicolsep}
+%     %\resumeSubHeadingListEnd
+% %
+%-----------PROGRAMMING SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: Python, Java, C, C++, Bash, R, React, JavaScript, SQL} \\
+     \textbf{Technologies/Frameworks}{: Linux, Git, PyTorch, Kafka, Feast, MLFlow, WandB, NoSQL, SQL, Apache Spark, Mongo} \\
+     \textbf{Concepts}{: MLOPs, Deep Learning, Information Retrieval, Software Architecture, Data Pipelines, Feature Stores, Parallel Architectures}
+    }}
+ \end{itemize}
+ \vspace{-16pt}
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {RBC Capital Markets}{May 2022 -- August 2023}
+      {Machine Learning Engineer}{Toronto, Ontario}
+      \resumeItemListStart
+        \resumeItem{\textbf{Improved sample efficiency} for a \textbf{multi-agent RL} trade execution algorithm, by introducing multiple backpropagations in the PPO training loop and enhancing the value function loss computation}
+        \resumeItem{\textbf{Designed} and \textbf{built} an \textbf{ETL Layer + Feature Store} with microservice style feature engineering and feature registration to break cross-team data silos.}
+        \resumeItem{Enhanced learning throughput of RL based \textbf{trading algorithm} by implementing a training data broker to enable \textbf{fault tolerant} \textbf{distributed workloads} for different models using a \textbf{ZeroMQ} push-pull architecture.}
+        \resumeItem{\textbf{Built} and \textbf{productionized} a submodular pptimization based stock portfolio recommendation system. Designed the algorithm and surrounding stack (storage, caching, API, scheduling, fault-tolerance, validation) using python.}
+        \resumeItem{Developed a novel Reinforcement Learning based recommender model for combinatorial space inspired by \textbf{Google’s SlateQ framework}.}
+      \resumeItemListEnd
+    \resumeSubheading
+      {IBM}{May 2021 -- August 2021}
+      {Machine Learning Engineering Intern}{Toronto, Ontario}
+      \resumeItemListStart
+        \resumeItem{Outperformed the benchmark by developing a lightweight computer vision model for key-point detection and anomaly detection on a small and noisy dataset. Improved ROC AUC from 68\% to 85\%. }
+        \resumeItem{Implemented single view 2D image to 3D mesh reconstruction inspired by state-of-the-art research, for 3D key-point analysis.}
+        \resumeItem{Created a natural language processing-based sentiment analysis dashboard prototype using Twitter data for market reception analysis using IBM Watson.}
+    \resumeItemListEnd
+    % \resumeSubheading
+    %   {Data Driven Decision Making Lab (D3M)}{May 2023 -- Present}
+    %   {Co-author, Lead}{Toronto, Ontario}
+    %   \resumeItemListStart
+    %     \resumeItem{\textbf{Developed} novel LLM based re-ranking methods on review based item retrieval}
+    %     \resumeItem{\textbf{Studied} failure cases of current SOTA information retrieval methods and key advantages of LLM based re-ranking}
+    %     \resumeItem{\textbf{Architected} a framework for Retrieval Augmented conversational recommender systems, inspired by \textbf{LangChain}}
+    %     \resumeItem{\textbf{Mentored} a group of 5 summer interns in building a conversational recommender system project.}
+    % \resumeItemListEnd
+  \resumeSubHeadingListEnd
+\vspace{-16pt}
+
+%-----------PROJECTS-----------
+\section{Research Experience}
+    \vspace{-5pt}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {\textbf{Data Driven Decision Making Lab (D3M)} $|$ \emph{Co-Author, Co-lead}}{May 2023 -- Present}
+        \resumeItemListStart
+            \resumeItem{\textbf{Developed} novel \textbf{LLM based re-ranking} methods on review based item retrieval}
+            \resumeItem{\textbf{Studied} failure cases of current SOTA \textbf{information retrieval} methods and key advantages of LLM based \textbf{re-ranking}}
+            \resumeItem{\textbf{Architected} a framework for Retrieval Augmented conversational recommender systems, inspired by \textbf{LangChain}}
+            \resumeItem{\textbf{Mentored} a group of 5 summer interns in building a conversational recommender system project.}
+        \resumeItemListEnd
+      \vspace{-20pt}
+      \resumeProjectHeading
+          {\textbf{Thomson Lab (Caltech)} $|$ \emph{Co-Author}}{August 2023 -- Present}
+        \resumeItemListStart
+            \resumeItem{\textbf{Implemented} search algorithms to back-generate prompts to control or elicit LLM response.}
+            \resumeItem{\textbf{Studied} controllability of \textbf{Large Language Models}. Found that LLMs could be steered to get the desired response 97\% of the times on the WikiHow dataset.}
+            \resumeItem{\textbf{Building} a decentralized peer-to-peer network for different LLMs to communicate on optimal prompts.}
+        \resumeItemListEnd
+      \vspace{-20pt}
+      \resumeProjectHeading
+          {\textbf{Tyrell Innovation Labs} $|$ \emph{Student}}{Sept 2021 -- April 2022}
+        \resumeItemListStart
+            \resumeItem{\textbf{Research} on sample efficiency of Vision Transformers on Chest X-Ray Classification Tasks.}
+            \resumeItem{\textbf{Trained} an X-Ray Computer Vision backbone model for the lab.}
+            \resumeItem{\textbf{Developed} guidelines for using Vision Transformers in data limited environments like medical imaging.}
+        \resumeItemListEnd
+          % \vspace{-13pt} 
+    \resumeSubHeadingListEnd
+\vspace{-15pt}
+
+%-----------INVOLVEMENT---------------
+\section{Leadership}
+    \resumeSubHeadingListStart
+        \resumeSubheading{UofT AI Group}{May 2020 -- May2022}{Director of UofT AI Conference}{}
+            \resumeItemListStart
+                \resumeItem{\textbf{Led} the organization of the 2022 UofT AI Conference, The World's largest Undergraduate AI Conference. Using interpersonal skills to delegate tasks, and invite speakers, sponsors, and students.}
+                \resumeItem{\textbf{Raised} \textbf{\$20,000} by communicating with companies like \textbf{IBM, Alta ML, 23andMe} etc. Raised \textbf{\$80,000} total for ProjectX and UofT AI Conference as a team}
+            \resumeItemListEnd
+        
+    \resumeSubHeadingListEnd
+
+
 \end{document}
